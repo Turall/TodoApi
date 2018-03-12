@@ -12,28 +12,26 @@ namespace TodoApi.Controllers
     [Route("api/[controller]")]
     public class TodoController : Controller
     {
-        private readonly TodoContex _contex;
-        public TodoController(TodoContex contex)
+       
+        public TodoController(ITodoRepository todoItems)
         {
-            _contex = contex;
-            if(_contex.TodoItems.Count() == 0)
-            {
-                _contex.TodoItems.Add(new TodoItem { Name = "item1" });
-                _contex.SaveChanges();
-            }
+            TodoItems = todoItems;
         }
+
+        public ITodoRepository TodoItems { get; set; }
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<TodoItem> GetAll()
         {
-            return _contex.TodoItems.ToList();
+            return TodoItems.GetAll();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}",Name ="GetTodo")]
-        public IActionResult GetById(long id)
+        public IActionResult GetById(string id)
         {
-            var item = _contex.TodoItems.FirstOrDefault(t => t.Id == id);
+            var item = TodoItems.Find(id);
             if(item == null)
             {
                 return NotFound();
@@ -43,8 +41,14 @@ namespace TodoApi.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Create([FromBody]TodoItem item)
         {
+            if(item == null)
+            {
+                return BadRequest();
+            }
+            TodoItems.Add(item);
+            return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
         }
 
         // PUT api/<controller>/5

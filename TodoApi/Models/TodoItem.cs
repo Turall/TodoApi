@@ -7,7 +7,7 @@ namespace TodoApi.Models
 {
     public class TodoItem
     {
-        public long Id { get; set; }
+        public string Key { get; set; }
         public string Name { get; set; }
         public bool  Iscomplete { get; set; }
     }
