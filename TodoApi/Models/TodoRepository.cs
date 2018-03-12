@@ -12,7 +12,7 @@ namespace TodoApi.Models
 
         public TodoRepository()
         {
-            Add(new TodoItem { Name = "item1" });
+            Add(new TodoItem { Maqazin_Adi = "Test" });
         }
 
         public void Add(TodoItem item)

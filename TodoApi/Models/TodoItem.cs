@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TodoApi.Models
+﻿namespace TodoApi.Models
 {
     public class TodoItem
     {
         public string Key { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string Maqazin_Adi { get; set; }
+        public string Filial { get; set; }
+        public string Paltar_Nov { get; set; }
+        public string Razmer { get; set; }
+        public string Reng { get; set; }
+        public string Endirim_Faiz { get; set; }
+        public string DeadLine { get; set; }
         public bool  Iscomplete { get; set; }
     }
 }

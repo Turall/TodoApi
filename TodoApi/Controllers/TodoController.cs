@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TodoApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace TodoApi.Controllers
 {
@@ -20,14 +20,14 @@ namespace TodoApi.Controllers
 
         public ITodoRepository TodoItems { get; set; }
 
-        // GET: api/<controller>
+       
         [HttpGet]
         public IEnumerable<TodoItem> GetAll()
         {
             return TodoItems.GetAll();
         }
 
-        // GET api/<controller>/5
+        
         [HttpGet("{id}",Name ="GetTodo")]
         public IActionResult GetById(string id)
         {
@@ -39,7 +39,7 @@ namespace TodoApi.Controllers
             return new ObjectResult(item);
         }
 
-        // POST api/<controller>
+       
         [HttpPost]
         public IActionResult Create([FromBody]TodoItem item)
         {
@@ -51,7 +51,7 @@ namespace TodoApi.Controllers
             return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
         }
 
-        // PUT api/<controller>/5
+        
         [HttpPatch("{id}")]
         public IActionResult Update([FromBody]TodoItem item,string id)
         {
@@ -69,7 +69,7 @@ namespace TodoApi.Controllers
             return new NoContentResult();
         }
 
-        // DELETE api/<controller>/5
+       
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
