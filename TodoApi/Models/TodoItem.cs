@@ -1,4 +1,6 @@
-﻿namespace TodoApi.Models
+﻿using System;
+
+namespace TodoApi.Models
 {
     public class TodoItem
     {
@@ -9,7 +11,7 @@
         public string Razmer { get; set; }
         public string Reng { get; set; }
         public string Endirim_Faiz { get; set; }
-        public string DeadLine { get; set; }
+        public DateTime DeadLine { get; set; }
         public bool  Iscomplete { get; set; }
     }
 }
