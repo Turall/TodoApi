@@ -9,6 +9,7 @@ namespace TodoApi.Models
     {
         public string Key { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
         public bool  Iscomplete { get; set; }
     }
 }

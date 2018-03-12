@@ -52,15 +52,34 @@ namespace TodoApi.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPatch("{id}")]
+        public IActionResult Update([FromBody]TodoItem item,string id)
         {
+            if(item == null)
+            {
+                return BadRequest();
+            }
+            var todo = TodoItems.Find(id);
+            if(todo == null)
+            {
+                return NotFound();
+            }
+            item.Key = todo.Key;
+            TodoItems.Update(item);
+            return new NoContentResult();
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(string id)
         {
+            var todo = TodoItems.Find(id);
+            if(todo == null)
+            {
+                return NotFound();
+            }
+            TodoItems.Remove(id);
+            return new NoContentResult();
         }
     }
 }
