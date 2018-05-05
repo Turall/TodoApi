@@ -21,7 +21,7 @@ namespace TodoApi.Controllers
         public ITodoRepository TodoItems { get; set; }
 
        
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IEnumerable<StatusInfo> GetAll()
         {
             return TodoItems.GetAll();
@@ -40,7 +40,7 @@ namespace TodoApi.Controllers
         }
 
        
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult Create([FromBody]StatusInfo item)
         {
             if(item == null)
