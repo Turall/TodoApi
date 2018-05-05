@@ -2,16 +2,17 @@
 
 namespace TodoApi.Models
 {
-    public class TodoItem
+    public class StatusInfo
     {
         public string Key { get; set; }
-        public string Maqazin_Adi { get; set; }
-        public string Filial { get; set; }
-        public string Paltar_Nov { get; set; }
-        public string Razmer { get; set; }
-        public string Reng { get; set; }
-        public string Endirim_Faiz { get; set; }
+        public string Azercell{ get; set; }
+        public string Express { get; set; }
+        public string Phone_Model { get; set; }
+        public string Problem { get; set; }
+        public bool Repair_Status { get; set; }
+        public string Username { get; set; }
         public DateTime DeadLine { get; set; }
         public bool  Iscomplete { get; set; }
+        public double Price { get; set; }
     }
 }

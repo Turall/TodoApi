@@ -8,39 +8,39 @@ namespace TodoApi.Models
 {
     public class TodoRepository : ITodoRepository
     {
-        private static ConcurrentDictionary<string, TodoItem> _todos = new ConcurrentDictionary<string, TodoItem>();
+        private static ConcurrentDictionary<string, StatusInfo> _todos = new ConcurrentDictionary<string, StatusInfo>();
 
         public TodoRepository()
         {
-            Add(new TodoItem { Maqazin_Adi = "Test" });
+            Add(new StatusInfo { Azercell = "Test" });
         }
 
-        public void Add(TodoItem item)
+        public void Add(StatusInfo item)
         {
             item.Key = Guid.NewGuid().ToString();
             _todos[item.Key] = item;
         }
 
-        public TodoItem Find(string key)
+        public StatusInfo Find(string key)
         {
-            TodoItem item;
+            StatusInfo item;
             _todos.TryGetValue(key, out item);
             return item;
         }
 
-        public IEnumerable<TodoItem> GetAll()
+        public IEnumerable<StatusInfo> GetAll()
         {
             return _todos.Values;
         }
 
-        public TodoItem Remove(string key)
+        public StatusInfo Remove(string key)
         {
-            TodoItem item;
+            StatusInfo item;
             _todos.TryRemove(key, out item);
             return item;
         }
 
-        public void Update(TodoItem item)
+        public void Update(StatusInfo item)
         {
             _todos[item.Key] = item;
         }

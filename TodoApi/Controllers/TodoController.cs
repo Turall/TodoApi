@@ -22,7 +22,7 @@ namespace TodoApi.Controllers
 
        
         [HttpGet]
-        public IEnumerable<TodoItem> GetAll()
+        public IEnumerable<StatusInfo> GetAll()
         {
             return TodoItems.GetAll();
         }
@@ -41,7 +41,7 @@ namespace TodoApi.Controllers
 
        
         [HttpPost]
-        public IActionResult Create([FromBody]TodoItem item)
+        public IActionResult Create([FromBody]StatusInfo item)
         {
             if(item == null)
             {
@@ -53,7 +53,7 @@ namespace TodoApi.Controllers
 
         
         [HttpPatch("{id}")]
-        public IActionResult Update([FromBody]TodoItem item,string id)
+        public IActionResult Update([FromBody]StatusInfo item,string id)
         {
             if(item == null)
             {

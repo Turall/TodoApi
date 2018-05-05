@@ -7,10 +7,10 @@ namespace TodoApi.Models
 {
    public interface ITodoRepository
     {
-        void Add(TodoItem item);
-        IEnumerable<TodoItem> GetAll();
-        TodoItem Find(string key);
-        TodoItem Remove(string key);
-        void Update(TodoItem item);
+        void Add(StatusInfo item);
+        IEnumerable<StatusInfo> GetAll();
+        StatusInfo Find(string key);
+        StatusInfo Remove(string key);
+        void Update(StatusInfo item);
     }
 }
